@@ -8,7 +8,7 @@ using namespace ::testing;
 
 TEST(SetTest, charTest) {
     Set<char *> set;
-    char *a = new char[3] {"aa"};
+    char *a = new char[3] {"aa"}; // REFACTOR: useless allocation, not dealocated
     set.add(a);
     ASSERT_EQ(1, set.getSize());
     char **list = set.getList();

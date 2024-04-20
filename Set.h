@@ -163,7 +163,7 @@ public:
 
     void remove(type value) { remove(value, hash(value)); };
     void remove(type value, int key) {
-        Node *node = list[key%capacity], *n = nullptr, *nodeToRemove = new Node(value, key);
+        Node *node = list[key%capacity], *n = nullptr, *nodeToRemove = new Node(value, key); // REFACTOR: useless allocation
         while (node != nullptr) {
             if (*node == *nodeToRemove) {
                 if (n == nullptr) {
@@ -185,7 +185,7 @@ public:
 
     bool contains(type value) { return contains(value, hash(value)); };
     bool contains(type value, int key) {
-        Node *node = list[key%capacity], *nodeToFind = new Node(value, key);
+        Node *node = list[key%capacity], *nodeToFind = new Node(value, key); // REFACTOR: useless allocation
         while (node != nullptr) {
             if (*node == *nodeToFind) {
                 delete nodeToFind;
@@ -233,7 +233,7 @@ private:
 
     size_t hash(const std::string key) {
         unsigned h = 0;
-        const char *a = key.c_str();
+        const char *a = key.c_str();  // REFACTOR: use const char * hash
         while (*a) {
             h = h * 101 + (unsigned) *a++;
         }

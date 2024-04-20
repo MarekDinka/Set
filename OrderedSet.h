@@ -143,7 +143,7 @@ public:
     };
 
     void remove(type value) { remove(value, hash(value)); };
-    void remove(type value, int key) {
+    void remove(type value, int key) {  // REFACTOR: this looks too complicated
         if (!contains(value, key)) {
             throw ValueNotFoundException();
         }
